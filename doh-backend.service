@@ -1,9 +1,10 @@
 [Unit]
-Description=DoH Frontend
+Description=DoH Backend
 After=docker.service
 
 [Service]
-ExecStart=/usr/bin/env docker run --rm -p 127.0.0.1:18053:8053 doh-frontend
+ExecStartPre=-/usr/bin/env docker run -d -p 127.0.0.1:18054:8054 --name doh-backend doh-backend
+ExecStart=/usr/bin/env docker start -a doh-backend
 Type=simple
 KillMode=process
 
