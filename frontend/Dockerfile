@@ -15,7 +15,11 @@ RUN git clone https://github.com/m13253/geodns-injector.git /opt/geodns-injector
     go build && \
     mkdir -p /usr/local/share/GeoIP
 
-RUN wget -O /usr/local/share/GeoIP/GeoLite2-Country.mmdb https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz #redo
+RUN wget -O /tmp/GeoLite2-Country.tar.gz https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz && \
+    cd /tmp && \
+    tar xvf GeoLite2-Country.tar.gz && \
+    mv /tmp/GeoLite2-Country_*/GeoLite2-Country.mmdb /usr/local/share/GeoIP && \
+    rm -rf /tmp/GeoLite2-Country* #redo
 
 COPY unbound.conf /etc/unbound/unbound.conf
 COPY doh-*.conf /etc/dns-over-https/
