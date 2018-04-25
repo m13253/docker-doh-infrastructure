@@ -1,7 +1,9 @@
-.PHONY: all
+.PHONY: all install
 
 all:
 	docker build -t doh-frontend frontend
 	docker build -t doh-backend backend
-	sudo install *.service /etc/systemd/system/
-	sudo systemctl daemon-reload || true
+
+install:
+	install -Dm0644 *.service /etc/systemd/system/
+	systemctl daemon-reload || true
