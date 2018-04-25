@@ -7,3 +7,4 @@ all:
 install:
 	install -Dm0644 *.service /etc/systemd/system/
 	systemctl daemon-reload || true
+	systemctl restart doh-frontend doh-backend || true
