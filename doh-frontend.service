@@ -3,7 +3,7 @@ Description=DoH Frontend
 After=docker.service
 
 [Service]
-ExecStartPre=-/usr/bin/env docker run -d -p 127.0.0.1:18053:8053 --name doh-frontend doh-frontend
+ExecStartPre=-/usr/bin/env docker run -d -p [::1]:18053:8053 --name doh-frontend doh-frontend
 ExecStart=/usr/bin/env docker start -a doh-frontend
 ExecStop=/usr/bin/env docker stop doh-frontend
 Type=simple
