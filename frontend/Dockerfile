@@ -2,7 +2,7 @@ FROM alpine:edge
 
 RUN apk update && \
     apk upgrade && \
-    apk add dnssec-root expat-dev git go linux-headers make musl-dev openssl-dev
+    apk add dnssec-root expat-dev file git go linux-headers make musl-dev openssl-dev
 
 RUN cd /tmp && \
     wget https://www.unbound.net/downloads/unbound-latest.tar.gz && \
