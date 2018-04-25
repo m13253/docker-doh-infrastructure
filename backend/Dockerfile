@@ -2,7 +2,7 @@ FROM alpine:edge
 
 RUN apk update && \
     apk upgrade && \
-    apk add dnssec-root expat-dev file git gnupg go linux-headers make musl-dev openssl-dev
+    apk add dnssec-root expat-dev file git gnupg go libevent-dev linux-headers make musl-dev openssl-dev
 
 RUN cd /tmp && \
     wget https://www.unbound.net/downloads/unbound-1.7.0.tar.gz.asc https://www.unbound.net/downloads/unbound-1.7.0.tar.gz && \
@@ -10,7 +10,7 @@ RUN cd /tmp && \
     gpg --verify unbound-*.tar.gz.asc unbound-*.tar.gz && \
     tar xvf unbound-*.tar.gz && \
     cd unbound-*/ && \
-    ./configure --enable-subnet && \
+    ./configure --enable-subnet --with-libevent && \
     make && \
     make install && \
     rm -rf /tmp/unbound-*
