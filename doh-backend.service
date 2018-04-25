@@ -3,7 +3,7 @@ Description=DoH Backend
 After=docker.service
 
 [Service]
-ExecStartPre=-/usr/bin/env docker run -d -p [::1]:18054:8054 --name doh-backend doh-backend
+ExecStartPre=-/usr/bin/env docker run -d -p [::1]:18054:8054 --name doh-backend --rm doh-backend
 ExecStart=/usr/bin/env docker start -a doh-backend
 ExecStop=/usr/bin/env docker stop doh-backend
 Type=simple
