@@ -5,10 +5,10 @@ RUN apk update && \
     apk add dnssec-root expat-dev file git gnupg go linux-headers make musl-dev openssl-dev
 
 RUN cd /tmp && \
-    wget https://www.unbound.net/downloads/unbound-latest.tar.gz{.asc,} && \
+    wget https://www.unbound.net/downloads/unbound-1.7.0.tar.gz{.asc,} && \
     gpg --recv-keys 9F6F1C2D7E045F8D && \
-    gpg --verify unbound-latest.tar.gz{.asc,} && \
-    tar xvf unbound-latest.tar.gz && \
+    gpg --verify unbound-*.tar.gz{.asc,} && \
+    tar xvf unbound-*.tar.gz && \
     cd unbound-*/ && \
     ./configure --enable-subnet && \
     make && \
