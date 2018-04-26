@@ -1,4 +1,4 @@
-.PHONY: all install
+.PHONY: all install uninstall
 
 all:
 	docker build -t doh-frontend frontend
