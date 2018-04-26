@@ -1,14 +1,16 @@
-.PHONY: all install uninstall
+.PHONY: all force install
 
 all:
-	docker rmi -f doh-frontend doh-backend || true
-	docker build -t doh-frontend frontend
-	docker build -t doh-backend backend
+	docker rmi -f m13253/doh-infrastructure:{frontend,backend} || true
+	docker build -t m13253/doh-infrastructure:common common
+	docker build -t m13253/doh-infrastructure:frontend --no-cache frontend
+	docker build -t m13253/doh-infrastructure:backend backend
 
-all:
-	docker rmi -f doh-frontend doh-backend || true
-	docker build -t doh-frontend --no-cache frontend
-	docker build -t doh-backend backend
+force:
+	docker rmi -f m13253/doh-infrastructure:{common,frontend,backend} || true
+	docker build -t m13253/doh-infrastructure:common --no-cache common
+	docker build -t m13253/doh-infrastructure:frontend frontend
+	docker build -t m13253/doh-infrastructure:backend backend
 
 install:
 	install -Dm0644 *.service /etc/systemd/system/
