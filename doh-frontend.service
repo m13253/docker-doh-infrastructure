@@ -6,6 +6,8 @@ After=docker.service
 ExecStartPre=-/usr/bin/env docker run -d -p [::1]:18053:8053 --name doh-frontend --rm m13253/doh-infrastructure:frontend
 ExecStart=/usr/bin/env docker start -a doh-frontend
 ExecStop=/usr/bin/env docker stop doh-frontend
+Restart=always
+RestartSec=3
 Type=simple
 
 [Install]
