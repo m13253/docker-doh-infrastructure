@@ -1,6 +1,6 @@
 FROM m13253/doh-infrastructure:common
 
-RUN mkdir /opt && \
+RUN mkdir -p /opt && \
     git clone https://github.com/m13253/dns-over-https.git /opt/dns-over-https && \
     cd /opt/dns-over-https && \
     make
