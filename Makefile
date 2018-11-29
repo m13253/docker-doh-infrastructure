@@ -8,6 +8,7 @@ all:
 	docker build -t m13253/doh-infrastructure:backend backend
 
 force:
+	docker pull alpine:edge
 	docker rmi -f m13253/doh-infrastructure:frontend || true
 	docker rmi -f m13253/doh-infrastructure:backend || true
 	docker rmi -f m13253/doh-infrastructure:common || true
