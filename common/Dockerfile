@@ -2,7 +2,7 @@ FROM alpine:edge
 
 RUN apk update && \
     apk upgrade && \
-    apk add dnssec-root expat git go libevent libssl1.0 make musl-dev && \
+    apk add dnssec-root expat git go libevent make musl-dev openssl && \
     apk add -t build-dep expat-dev file gnupg libevent-dev linux-headers make openssl-dev && \
     cd /tmp && \
     wget https://www.unbound.net/downloads/unbound-1.7.0.tar.gz.asc https://www.unbound.net/downloads/unbound-1.7.0.tar.gz && \
