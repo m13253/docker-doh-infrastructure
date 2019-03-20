@@ -1,5 +1,8 @@
 FROM alpine:edge
 
+ENV GO111MODULE on
+ENV GODEBUG tls13=1
+
 ADD https://nlnetlabs.nl/downloads/unbound/unbound-1.9.1.tar.gz.asc /tmp/unbound-1.9.1.tar.gz.asc
 ADD https://nlnetlabs.nl/downloads/unbound/unbound-1.9.1.tar.gz /tmp/unbound-1.9.1.tar.gz
 RUN apk update && \
