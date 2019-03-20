@@ -1,7 +1,7 @@
 FROM alpine:edge
 
-ADD https://nlnetlabs.nl/downloads/unbound/unbound-1.8.1.tar.gz.asc /tmp/unbound-1.8.1.tar.gz.asc
-ADD https://nlnetlabs.nl/downloads/unbound/unbound-1.8.1.tar.gz /tmp/unbound-1.8.1.tar.gz
+ADD https://nlnetlabs.nl/downloads/unbound/unbound-1.9.1.tar.gz.asc /tmp/unbound-1.9.1.tar.gz.asc
+ADD https://nlnetlabs.nl/downloads/unbound/unbound-1.9.1.tar.gz /tmp/unbound-1.9.1.tar.gz
 RUN apk update && \
     apk upgrade && \
     apk add dnssec-root expat git go libevent make musl-dev openssl && \
